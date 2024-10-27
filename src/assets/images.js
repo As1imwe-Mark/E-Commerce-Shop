@@ -34,6 +34,9 @@ import leftarrow from './leftArrow.png'
 import logo from './logo.png'
 import mastercard from './Mastercard.png'
 import message from './message.png'
+import menu from './menu.png'
+import tiktok from './tiktok.png'
+import instagram from './instagram.png'
 import paypal from './Paypal.png'
 import prada from './prada.png'
 import rightarrow from './rightArrow.png'
@@ -49,4 +52,4 @@ import apay from './ Pay.png'
 import vector from './Vector (29).png'
 
 
-export {image1,image10,image11,image12,image13,image14,image16,image17,image18,image19,image2,image3,image4,image5,image6,image7,image8,image9,vector,versace,apay,github,gpay,gucci,tag,twitter,search,star,rightarrow,visa,zara,user,halfstar,hero,herostar,leftarrow,logo,mastercard,message,paypal,prada,arrowdown,facebook,filter,Delete,calvin,cart,check,chevronright}
+export {image1,image10,image11,image12,image13,image14,image16,image17,image18,image19,image2,image3,image4,image5,image6,image7,image8,image9,vector,versace,apay,github,gpay,gucci,tag,twitter,search,star,rightarrow,visa,zara,user,halfstar,hero,herostar,leftarrow,menu, tiktok, instagram,logo,mastercard,message,paypal,prada,arrowdown,facebook,filter,Delete,calvin,cart,check,chevronright}

@@ -92,7 +92,7 @@ const Shop = () => {
 
       {/* Main Product Section */}
       <div className="md:ml-[25%] w-full lg:w-3/4 p-5">
-      <button onClick={Back} className="py-1 px-2 bg-red-400 rounded-md text-white outline-none hover:bg-red-500">Back</button>
+      <button onClick={Back} className="py-1 hidden md:block px-2 bg-red-400 rounded-md text-white outline-none hover:bg-red-500">Back</button>
         <h2 className="text-2xl text-center sm:text-3xl md:text-4xl font-bold mb-5 capitalize">
         Browse through our wide range of meticulously crafted Clothes
         </h2>

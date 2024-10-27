@@ -101,7 +101,7 @@ const CategoryPage = () => {
 
       {/* Main Product Section */}
       <div className="w-full lg:w-3/4 p-5 md:ml-[25%]">
-      <button onClick={Back} className="py-1 px-2 bg-red-400 rounded-md text-white outline-none hover:bg-red-500 mb-4">Back</button>
+      <button onClick={Back} className="py-1 px-2 hidden md:block bg-red-400 rounded-md text-white outline-none hover:bg-red-500 mb-4">Back</button>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-5 capitalize">
           {category} Style
         </h2>

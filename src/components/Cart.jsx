@@ -37,7 +37,7 @@ const CartPage = () => {
 
   return (
     <main className="p-5 md:mt-[79px] md:h-[90%] overflow-hidden  scroll-m-6">
-    <button onClick={Back} className="py-1 px-2 bg-red-400 rounded-md text-white outline-none hover:bg-red-500 mt-5">Back</button>
+    <button onClick={Back} className="py-1 hidden md:block px-2 bg-red-400 rounded-md text-white outline-none hover:bg-red-500 mt-5">Back</button>
       <h1 className="text-2xl text-center font-bold mb-5">Shopping Cart</h1>
       <div className='max-w-[85%] mx-auto flex flex-col md:flex-row justify-between gap-10'>
 

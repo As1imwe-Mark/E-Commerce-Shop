@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { cart, logo} from '../assets/images';
+import { cart, logo, menu} from '../assets/images';
 import { Link } from 'react-router-dom';
 
 const Nav = () => {
   const [cartQuantity, setCartQuantity] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const intervalId = setInterval(()=>{
@@ -15,7 +16,7 @@ const Nav = () => {
     return ()=>clearInterval(intervalId)
   }, []);
 
-
+  
   return (
     <header className="bg-black md:fixed top-0 left-0 right-0 z-50">
       <nav className="flex items-center justify-between max-w-[85%] mx-auto py-5">
@@ -24,6 +25,7 @@ const Nav = () => {
           <span className="w-15 text-gray-400 hidden sm:block font-extrabold text-3xl">TWAU AFRICA LTD</span>
         </div>
         <ul className="items-center gap-5 hidden md:flex font-bold text-gray-500">
+          <li className='hover:text-white'><Link to='/'>Home</Link></li>
           <li className='hover:text-white'><Link to='/shop'>Shop</Link></li>
           <li className='hover:text-white'><Link to="/new-arrivals">New Arrivals</Link></li>
           <li className='hover:text-white'><Link to="/top-seller">Top Sellers</Link></li>
@@ -32,11 +34,28 @@ const Nav = () => {
           <img src={search} alt="search" className="text-gray-300" />
           <input className="w-full bg-transparent outline-none" placeholder="Search for products..." />
         </div> */}
+        <div className='flex justify-evenly items-center gap-10'>
         <div className="relative">
-          <div className='bg-white p-2 rounded-md'><Link to='/cart'><img src={cart} alt="cart" className='text-white' /></Link></div>
+          <div className='bg-white self-center p-2 rounded-md'><Link to='/cart'><img src={cart} alt="cart" className='text-white' /></Link></div>
           <span className="font-bold text-white text-md absolute top-[-16px] right-[-17px] rounded-full w-6 h-6 flex items-center justify-center bg-red-600">{cartQuantity}</span>
         </div>
+
+          <div className='p-1 bg-white md:hidden'>
+            <button onClick={()=>setMenuOpen(!menuOpen)}><img src={menu} alt="menu" /></button>
+          </div>
+        </div>
+        
       </nav>
+      <div  className={`h-screen bg-white fixed top-[85px] left-0 transform transition-transform duration-500 ease-in-out ${menuOpen ? 'translate-x-0': '-translate-x-full'} md:hidden bg-white w-44`}>
+        <div className='flex items-center justify-center pt-12'>
+        <ul onClick={()=>setMenuOpen(!menuOpen)} className="items-center space-y-8 gap-5 md:hidden flex-col flex font-bold text-gray-500">
+        <li className='hover:text-white'><Link to='/'>Home</Link></li>
+          <li className='hover:text-white'><Link to='/shop'>Shop</Link></li>
+          <li className='hover:text-white'><Link to="/new-arrivals">New Arrivals</Link></li>
+          <li className='hover:text-white'><Link to="/top-seller">Top Sellers</Link></li>
+        </ul>
+        </div>
+      </div>
     </header>
   );
 };

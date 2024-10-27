@@ -20,7 +20,7 @@ const Product = () => {
     <Hero />
     <section className="bg-white">
       {/* New Arrivals Section */}
-      <section id="new" className="max-w-[85%] mx-auto">
+      <section id="new" className="max-w-full mx-auto">
         <h2 className="text-4xl font-bold text-center py-10">NEW ARRIVALS</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {Products.filter((p) => p.status === "newArrivals").slice(0,4).map((product)=><ProductCard key={product.id} product={product} />) 
@@ -38,7 +38,7 @@ const Product = () => {
       </section>
 
       {/* Top Selling Section */}
-      <section id="top" className="max-w-[85%] mx-auto border-t-2 border-gray-300 ">
+      <section id="top" className="max-w-full mx-auto border-t-2 border-gray-300 ">
         <h2 className="text-4xl font-bold text-center py-10">TOP SELLING</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {Products.filter((p) => p.status === "topSelling").slice(0,4).map((product)=><ProductCard key={product.id} product={product} />) 

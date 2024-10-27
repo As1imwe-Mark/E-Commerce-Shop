@@ -56,7 +56,7 @@ const Hero = () => {
 
       {/* Brands Section */}
       <section className="bg-black py-8 sm:py-10">
-        <div className="max-w-[90%] md:max-w-[85%] mx-auto flex justify-between items-center flex-wrap gap-5">
+        <div className="max-w-[90%] md:max-w-[85%] mx-auto flex justify-between items-center md:flex-wrap gap-5">
           <span className="flex justify-center w-1/3 md:w-auto">
             <img src={versace} alt="Versace" className="w-20 sm:w-24 lg:w-32" />
           </span>
