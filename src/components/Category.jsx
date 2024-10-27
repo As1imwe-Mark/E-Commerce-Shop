@@ -43,78 +43,83 @@ const CategoryPage = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row md:pt-4 md:mt-[70Px] md:h-screen">
-      {/* Sidebar Filter */}
-      <div className="w-full md:h-screen lg:w-1/4 p-5 bg-gray-100 md:top-[89px] md:fixed">
-        <h2 className="text-2xl font-bold mb-5">Filters</h2>
-        <div className="mb-5">
-          <label className="block mb-2">Color:</label>
-          <select
-            name="color"
-            value={filters.color}
-            onChange={handleFilterChange}
-            className="w-full p-2 rounded"
-          >
-            <option value="">All</option>
-            <option value="Red">Red</option>
-            <option value="Blue">Blue</option>
-            <option value="Green">Green</option>
-          </select>
-        </div>
-        <div className="mb-5">
-          <label className="block mb-2">Size:</label>
-          <select
-            name="size"
-            value={filters.size}
-            onChange={handleFilterChange}
-            className="w-full p-2 rounded"
-          >
-            <option value="">All</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-          </select>
-        </div>
-        <div className="mb-5">
-          <label className="block mb-2">Price Range:</label>
-          <input
-            type="number"
-            name="minPrice"
-            placeholder="Min"
-            value={filters.minPrice}
-            onChange={handleFilterChange}
-            className="w-full p-2 rounded mb-2"
-          />
-          <input
-            type="number"
-            name="maxPrice"
-            placeholder="Max"
-            value={filters.maxPrice}
-            onChange={handleFilterChange}
-            className="w-full p-2 rounded"
-          />
-        </div>
-        <button onClick={applyFilters} className="w-full p-2 bg-blue-500 text-white rounded">
-          Apply Filters
-        </button>
+    <div className="flex flex-col lg:flex-row scroll-m-20 md:mt-[89px]">
+    {/* Sidebar Filter */}
+    <div className="w-full md:h-screen lg:w-1/4 p-5 bg-gray-100 md:top-[89px] md:fixed">
+      <h2 className="text-2xl font-bold mb-5">Filters</h2>
+      <div className="mb-5">
+        <label className="block mb-2">Color:</label>
+        <select
+          name="color"
+          value={filters.color}
+          onChange={handleFilterChange}
+          className="w-full p-2 rounded"
+        >
+          <option value="">All</option>
+          <option value="Red">Red</option>
+          <option value="Blue">Blue</option>
+          <option value="Green">Green</option>
+        </select>
       </div>
+      <div className="mb-5">
+        <label className="block mb-2">Size:</label>
+        <select
+          name="size"
+          value={filters.size}
+          onChange={handleFilterChange}
+          className="w-full p-2 rounded"
+        >
+          <option value="">All</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+        </select>
+      </div>
+      <div className="mb-5">
+        <label className="block mb-2">Price Range:</label>
+        <input
+          type="number"
+          name="minPrice"
+          placeholder="Min"
+          value={filters.minPrice}
+          onChange={handleFilterChange}
+          className="w-full p-2 rounded mb-2"
+        />
+        <input
+          type="number"
+          name="maxPrice"
+          placeholder="Max"
+          value={filters.maxPrice}
+          onChange={handleFilterChange}
+          className="w-full p-2 rounded"
+        />
+      </div>
+      <button onClick={applyFilters} className="w-full p-2 bg-blue-500 text-white rounded">
+        Apply Filters
+      </button>
+    </div>
 
-      {/* Main Product Section */}
-      <div className="w-full lg:w-3/4 p-5 md:ml-[25%]">
-      <button onClick={Back} className="py-1 px-2 hidden md:block bg-red-400 rounded-md text-white outline-none hover:bg-red-500 mb-4">Back</button>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-5 capitalize">
-          {category} Style
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-          {filteredProducts.map((product) => {
-            if (product.category === category) {
-              return <ProductCard key={product.id} product={product} />;
-            }
-          })}
-        </div>
+    {/* Main Product Section */}
+    <div className="md:ml-[25%] w-full lg:w-3/4 p-5">
+    <button onClick={Back} className="py-1 hidden md:block px-2 bg-red-400 rounded-md text-white outline-none hover:bg-red-500">Back</button>
+      <h2 className="text-2xl text-center sm:text-3xl md:text-4xl font-bold mb-5 capitalize">
+      {category} Style
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
+      {filteredProducts.map((product) => {
+          if (product.category === category) {
+            return <ProductCard key={product.id} product={product} />;
+          }
+        })}
       </div>
     </div>
+  </div>
   );
 };
 
 export default CategoryPage;
+
+
+
+
+

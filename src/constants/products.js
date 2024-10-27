@@ -1,11 +1,11 @@
 // import {v4 as uuid} from 'uuid'
 
-import { image10, image17, image18, image5, image6, image7, image8, image9, } from "../assets/images"
+import { im0, im1, im4, im10,im11,im119,im12,im13,im14,im15,im17,im18,im20,im21,im22,im23,im24,im25,im26,im27,im28,im29,im30,im31,im32,im33,im34,im35,im36,im37,im38,im39,im40,im41,im42,im43,im44,im45,im46,im5,im6,im7,im8,im9 } from "../assets/images"
 export const Products =[
   {
     id: 1,
     name: 'T-shirt with tape details',
-    Image: image6 ,
+    Image: im0 ,
     price: 120000,
     rating: 4.5,
     status: 'newArrivals',
@@ -16,7 +16,7 @@ export const Products =[
   {
     id: 2,
     name: 'Skinny Fit jeans',
-    Image: image8 ,
+    Image:im1 ,
     price: 240000,
     rating: 3.5,
     status: 'newArrivals',
@@ -25,31 +25,9 @@ export const Products =[
     quantity:1
   },
   {
-    id: 3,
-    name: 'Checkered Shirt',
-    Image: image9,
-    price: 180000,
-    rating: 4.5,
-    status: 'newArrivals',
-    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
-    category:"Casual",
-    quantity:1
-  },
-  {
-    id: 4,
-    name: 'Sleeve Striped T-Shirt',
-    Image: image10 ,
-    price: 130000,
-    rating: 4.5,
-    status: 'newArrivals',
-    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
-    category:"Casual",
-    quantity:1
-  },
-  {
     id: 5,
     name: 'Vertical Striped Shirt',
-    Image: image5,
+    Image: im4,
     price: 212000,
     rating: 5.0,
     status: 'topSelling',
@@ -60,7 +38,7 @@ export const Products =[
   {
     id: 6,
     name: 'Courage Graphic T-Shirt',
-    Image: image7 ,
+    Image: im5 ,
     price: 145000,
     rating: 4.0,
     status: 'topSelling',
@@ -71,7 +49,7 @@ export const Products =[
   {
     id: 7,
     name: 'Loose Fit Bermunda Shorts',
-    Image: image17,
+    Image: im6,
     price: 80000,
     rating: 3.0,
     status: 'topSelling',
@@ -81,8 +59,424 @@ export const Products =[
   },
   {
     id: 8,
+    name: 'Loose Fit Bermunda Shorts',
+    Image: im7,
+    price: 80000,
+    rating: 3.0,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Formal",
+    quantity:1
+  },
+  {
+    id: 9,
     name: 'Faded Skinny Jeans',
-    Image: image18,
+    Image: im8,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 10,
+    name: 'Faded Skinny Jeans',
+    Image: im9,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Gym",
+    quantity:1
+  },
+  {
+    id: 11,
+    name: 'Faded Skinny Jeans',
+    Image: im10,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 12,
+    name: 'Faded Skinny Jeans',
+    Image: im11,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Party",
+    quantity:1
+  },
+  {
+    id: 13,
+    name: 'Faded Skinny Jeans',
+    Image: im12,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Formal",
+    quantity:1
+  },
+  {
+    id: 14,
+    name: 'Faded Skinny Jeans',
+    Image: im13,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 15,
+    name: 'Faded Skinny Jeans',
+    Image: im14,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 16,
+    name: 'Faded Skinny Jeans',
+    Image: im15,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 17,
+    name: 'Faded Skinny Jeans',
+    Image: im6,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 18,
+    name: 'Faded Skinny Jeans',
+    Image: im17,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 19,
+    name: 'Faded Skinny Jeans',
+    Image: im18,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 20,
+    name: 'Faded Skinny Jeans',
+    Image: im119,
+    price: 120000,
+    rating: 4.5,
+status: 'topSelling',    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 21,
+    name: 'Faded Skinny Jeans',
+    Image: im20,
+    price: 120000,
+    rating: 4.5,
+status: 'topSelling',    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 22,
+    name: 'Faded Skinny Jeans',
+    Image: im21,
+    price: 120000,
+    rating: 4.5,
+status: 'topSelling',    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 23,
+    name: 'Faded Skinny Jeans',
+    Image: im22,
+    price: 120000,
+    rating: 4.5,
+    status: 'newArrivals',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 24,
+    name: 'Faded Skinny Jeans',
+    Image: im23,
+    price: 120000,
+    rating: 4.5,
+status: 'newArrivals',    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Gym",
+    quantity:1
+  },
+  {
+    id: 25,
+    name: 'Faded Skinny Jeans',
+    Image: im24,
+    price: 120000,
+    rating: 4.5,
+status: 'newArrivals',    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Formal",
+    quantity:1
+  },
+  {
+    id: 26,
+    name: 'Faded Skinny Jeans',
+    Image: im25,
+    price: 120000,
+    rating: 4.5,
+status: 'newArrivals',    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Party",
+    quantity:1
+  },
+  {
+    id: 27,
+    name: 'Faded Skinny Jeans',
+    Image: im26,
+    price: 120000,
+    rating: 4.5,
+status: 'newArrivals',    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 28,
+    name: 'Faded Skinny Jeans',
+    Image: im27,
+    price: 120000,
+    rating: 4.5,
+status: 'newArrivals',    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Gym",
+    quantity:1
+  },
+  {
+    id: 29,
+    name: 'Faded Skinny Jeans',
+    Image: im28,
+    price: 120000,
+    rating: 4.5,
+status: 'newArrivals',    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Formal",
+    quantity:1
+  },
+  {
+    id: 30,
+    name: 'Faded Skinny Jeans',
+    Image: im29,
+    price: 120000,
+    rating: 4.5,
+status: 'newArrivals',    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Party",
+    quantity:1
+  },
+  {
+    id: 31,
+    name: 'Faded Skinny Jeans',
+    Image: im30,
+    price: 120000,
+    rating: 4.5,
+status: 'newArrivals',    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 32,
+    name: 'Faded Skinny Jeans',
+    Image: im31,
+    price: 120000,
+    rating: 4.5,
+status: 'newArrivals',    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Gym",
+    quantity:1
+  },
+  {
+    id: 33,
+    name: 'Faded Skinny Jeans',
+    Image: im32,
+    price: 120000,
+    rating: 4.5,
+status: 'newArrivals',    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Party",
+    quantity:1
+  },
+  {
+    id: 34,
+    name: 'Faded Skinny Jeans',
+    Image: im33,
+    price: 120000,
+    rating: 4.5,
+    status: 'newArrivals',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Formal",
+    quantity:1
+  },
+  {
+    id: 35,
+    name: 'Faded Skinny Jeans',
+    Image: im34,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 36,
+    name: 'Faded Skinny Jeans',
+    Image: im35,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Gym",
+    quantity:1
+  },
+  {
+    id: 37,
+    name: 'Faded Skinny Jeans',
+    Image: im36,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Party",
+    quantity:1
+  },
+  {
+    id: 38,
+    name: 'Faded Skinny Jeans',
+    Image: im37,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Formal",
+    quantity:1
+  },
+  {
+    id: 39,
+    name: 'Faded Skinny Jeans',
+    Image: im38,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 40,
+    name: 'Faded Skinny Jeans',
+    Image: im39,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Gym",
+    quantity:1
+  },
+  {
+    id: 41,
+    name: 'Faded Skinny Jeans',
+    Image: im40,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Party",
+    quantity:1
+  },
+  {
+    id: 42,
+    name: 'Faded Skinny Jeans',
+    Image: im41,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Formal",
+    quantity:1
+  },
+  {
+    id: 43,
+    name: 'Faded Skinny Jeans',
+    Image: im42,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Casual",
+    quantity:1
+  },
+  {
+    id: 44,
+    name: 'Faded Skinny Jeans',
+    Image: im43,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Gym",
+    quantity:1
+  },
+  {
+    id: 45,
+    name: 'Faded Skinny Jeans',
+    Image: im44,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Party",
+    quantity:1
+  },
+  {
+    id: 46,
+    name: 'Faded Skinny Jeans',
+    Image: im45,
+    price: 120000,
+    rating: 4.5,
+    status: 'topSelling',
+    description:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, suscipit ab. Officia, tempora! Sit, quia. Nam aperiam eos magni porro ad. Dignissimos vitae dolorum tempora iusto quia esse officiis nesciunt!",
+    category:"Formal",
+    quantity:1
+  },
+  {
+    id: 47,
+    name: 'Faded Skinny Jeans',
+    Image: im46,
     price: 120000,
     rating: 4.5,
     status: 'topSelling',
