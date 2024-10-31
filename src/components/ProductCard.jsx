@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import sanityClient from '../sanity/sanityClient';
 
 const ProductCard = ({ product }) => {
@@ -7,25 +7,31 @@ const ProductCard = ({ product }) => {
   const [cartItems, setCartItems] = useState([]);
   const [addedToCart, setAddedToCart] = useState(false); // New state for success message
 
+  useEffect(() => {
+    const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    setCartItems(storedCartItems);
+  }, []);
+
   const handleImageClick = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
 
   const addToCart = async () => {
-    // Check if the product is already in the cart
-    const existingItem = cartItems.find((item) => item.productId === product._id);
-
+    const existingItemIndex = cartItems.findIndex((item) => item.productId === product._id);
+    
     try {
-      if (existingItem) {
-        // Update the quantity in Sanity (Assuming we have a cart document type)
-        const updatedCart = cartItems.map((item) =>
-          item.productId === product._id ? { ...item, quantity: item.quantity + 1 } : item
-        );
+      let updatedCart;
+      if (existingItemIndex !== -1) {
+        // Item exists, so update quantity in the local state and Sanity
+        updatedCart = [...cartItems];
+        updatedCart[existingItemIndex].quantity += 1;
         setCartItems(updatedCart);
-
+  
         // Update quantity in Sanity
-        await sanityClient.patch(existingItem._id).set({ quantity: existingItem.quantity + 1 }).commit();
+        await sanityClient.patch(cartItems[existingItemIndex]._id)
+          .set({ quantity: updatedCart[existingItemIndex].quantity })
+          .commit();
       } else {
-        // Add a new item to the cart in Sanity
+        // Item does not exist in the cart, add as a new item
         const newCartItem = {
           _type: 'cart',
           product: {
@@ -33,20 +39,26 @@ const ProductCard = ({ product }) => {
             _ref: product._id,
           },
           quantity: 1,
-          selectedSize: 'medium', // For demonstration purposes, you can choose sizes dynamically
+          selectedSize: 'medium', // Set size or make it selectable
         };
-
+  
         const createdCartItem = await sanityClient.create(newCartItem);
-        setCartItems([...cartItems, { ...createdCartItem, productId: product._id }]);
+        updatedCart = [...cartItems, { ...createdCartItem, productId: product._id, quantity: 1 }];
+        setCartItems(updatedCart);
       }
-
-      // Set success state
+  
+      // Set success message
       setAddedToCart(true);
-      setTimeout(() => setAddedToCart(false), 3000); // Remove success message after 3 seconds
+      setTimeout(() => setAddedToCart(false), 3000);
+  
+      // Update local storage with the new or updated cart items
+      localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+      
     } catch (error) {
       console.error("Failed to add item to cart:", error);
     }
   };
+  
 
   return (
     <div className="w-[85%] flex flex-col justify-between sm:w-72 m-5 p-2 border border-gray-300 rounded-lg shadow-lg">

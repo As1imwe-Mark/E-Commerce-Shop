@@ -14,60 +14,74 @@ const CartPage = () => {
 
   const navigate = useNavigate();
 
-  const Back = () => {
-    navigate(-1);
-  };
+  const Back = () => navigate(-1);
 
+  // Fetch items once on load
   useEffect(() => {
-      const fetchCartItems = async () => {
-        try {
-          const items = await sanityClient.fetch(`*[_type == "cart"]{
+    const fetchCartItems = async () => {
+      try {
+        const items = await sanityClient.fetch(`*[_type == "cart"]{
+          _id,
+          quantity,
+          "product": product->{
             _id,
-            quantity,
-            "product": product->{
-              _id,
-              name,
-              size,
-              color,
-              price,
-              "imageUrl": image.asset->url
-            }
-          }`);
-          setCartItems(items);
-          localStorage.setItem("cartItems", JSON.stringify(items));
-        } catch (error) {
-          setErrorMessage("Error fetching cart items. Please try again.");
-        }
-      };
-      fetchCartItems();
-    },[])
+            name,
+            size,
+            color,
+            price,
+            "imageUrl": image.asset->url
+          }
+        }`);
+        setCartItems(items);
+        localStorage.setItem("cartItems", JSON.stringify(items));
+      } catch (error) {
+        setErrorMessage("Error fetching cart items. Please try again.");
+      }
+    };
+    fetchCartItems();
+  }, []);
 
   const handleRemove = async (id) => {
     try {
+      // Remove item from Sanity
       await sanityClient.delete(id);
-      setCartItems((prevItems) => prevItems.filter((item) => item._id !== id));
+  
+      // Update cart items in local state
+      const updatedCartItems = cartItems.filter((item) => item._id !== id);
+      setCartItems(updatedCartItems);
+  
+      // Update local storage
+      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+  
       setSuccessMessage("Item removed successfully.");
     } catch (error) {
       setErrorMessage("Error removing item. Please try again.");
     }
   };
-
+  
   const handleQuantityChange = async (id, quantity) => {
     const updatedQuantity = parseInt(quantity);
     if (isNaN(updatedQuantity) || updatedQuantity <= 0) return;
-
+  
     try {
+      // Update quantity in Sanity
       await sanityClient.patch(id).set({ quantity: updatedQuantity }).commit();
-      setCartItems((prevItems) =>
-        prevItems.map((item) =>
-          item._id === id ? { ...item, quantity: updatedQuantity } : item
-        )
+  
+      // Update quantity in the local state
+      const updatedCartItems = cartItems.map((item) =>
+        item._id === id ? { ...item, quantity: updatedQuantity } : item
       );
+      setCartItems(updatedCartItems);
+  
+      // Update local storage
+      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+  
       setSuccessMessage("Quantity updated successfully.");
     } catch (error) {
       setErrorMessage("Error updating quantity. Please try again.");
     }
   };
+  
 
   const total = cartItems.reduce(
     (acc, item) => acc + item.product.price * item.quantity,
