@@ -111,6 +111,7 @@ const CartPage = () => {
         items: orderDetails.items,
       });
       setSuccessMessage("Checkout successful! Your order has been placed.");
+      setCartItems([])
       setCustomerName("");
       setContact("");
       setAddress("");
