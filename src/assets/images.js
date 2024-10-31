@@ -1,38 +1,53 @@
+import cart from "./cart.png";
 
-import arrowdown from './arrowDown.png'
-import cart from './cart.png'
-import check from './Check.png'
-import chevronright from './chevronRight.png'
-import calvin from './clavinK.png'
-import Delete from './delete.png'
-import facebook from './facebook.png'
-import filter from './filter.png'
-import gpay from './G Pay.png'
-import github from './github.png'
-import gucci from './gucci.png'
-import halfstar from './half star.png'
-import hero from './hero.png'
-import herostar from './heroStar.png'
-import leftarrow from './leftArrow.png'
-import logo from './logo.png'
-import mastercard from './Mastercard.png'
-import message from './message.png'
-import menu from './menu.png'
-import tiktok from './tiktok.png'
-import instagram from './instagram.png'
-import paypal from './Paypal.png'
-import prada from './prada.png'
-import rightarrow from './rightArrow.png'
-import search from './search.png'
-import star from './Star 1.png'
-import tag from './tag.png'
-import twitter from './twitter.png'
-import user from './UserIcon.png'
-import versace from './versace.png'
-import visa from './Visa.png'
-import zara from './zara.png'
-import apay from './ Pay.png'
-import vector from './Vector (29).png'
+import calvin from "./clavinK.png";
 
+import facebook from "./facebook.png";
+import airtel from './airtel.png'
+import mtn from './mtn.png'
 
-export {vector,versace,apay,github,gpay,gucci,tag,twitter,search,star,rightarrow,visa,zara,user,halfstar,hero,herostar,leftarrow,menu, tiktok, instagram,logo,mastercard,message,paypal,prada,arrowdown,facebook,filter,Delete,calvin,cart,check,chevronright}
+import github from "./github.png";
+import gucci from "./gucci.png";
+
+import hero from "./hero.png";
+import herostar from "./heroStar.png";
+
+import logo from "./logo.png";
+
+import message from "./message.png";
+import menu from "./menu.png";
+import tiktok from "./tiktok.png";
+import instagram from "./instagram.png";
+import prada from "./prada.png";
+import search from "./search.png";
+import star from "./Star 1.png";
+
+import twitter from "./twitter.png";
+import user from "./UserIcon.png";
+import versace from "./versace.png";
+
+import zara from "./zara.png";
+
+export {
+  versace,
+  github,
+  gucci,
+  twitter,
+  search,
+  star,
+  zara,
+  user,
+  hero,
+  herostar,
+  menu,
+  tiktok,
+  instagram,
+  logo,
+  message,
+  prada,
+  facebook,
+  airtel,
+  mtn,
+  calvin,
+  cart,
+};

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import sanityClient from '../sanity/sanityClient'
 import { useNavigate } from "react-router-dom";
+import Layout from './Layout'
 
 const Shop = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -51,6 +52,7 @@ const Shop = () => {
   };
 
   return (
+    <Layout>
     <div className="flex flex-col lg:flex-row scroll-m-20 md:mt-[89px]">
       {/* Sidebar Filter */}
       <div className="w-full md:h-screen lg:w-1/4 p-5 bg-gray-100 md:top-[89px] md:fixed">
@@ -123,6 +125,7 @@ const Shop = () => {
         </div>
       </div>
     </div>
+    </Layout>
   );
 };
 

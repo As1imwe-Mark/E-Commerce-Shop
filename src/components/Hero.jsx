@@ -43,7 +43,8 @@ const Hero = () => {
         {/* Right Section */}
         <section className="w-full md:w-1/2 relative">
           <div className="w-full">
-            <img src={hero} className="object-cover w-full h-full" alt="Hero Banner" />
+            {/* Use loading="lazy" for lazy loading and a low-quality placeholder */}
+            <img src={hero} className="object-cover w-full h-full" alt="Hero Banner" loading="lazy" />
           </div>
           <span className="absolute right-2 top-4 hidden sm:block">
             <img className="object-cover w-8 sm:w-12 lg:w-16" src={herostar} alt="Star" />

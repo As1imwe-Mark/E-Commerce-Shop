@@ -44,7 +44,6 @@ const App = () => {
         <Route path="/top-seller" element={<TopSeller />} />
         <Route path="/new-arrivals" element={<NewArrivals />} />
       </Routes>
-      <Footer />
     </Router>
     </div>
   );
