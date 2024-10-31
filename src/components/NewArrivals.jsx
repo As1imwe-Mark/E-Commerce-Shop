@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import sanityClient from "../sanity/sanityClient";
 import ProductCard from "./ProductCard";
-import Layout from './Layout';
+import Layout from "./Layout";
 
 const NewArrivals = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -11,6 +11,21 @@ const NewArrivals = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Function to load products from local storage or fetch from Sanity
+    const loadProducts = () => {
+      const storedProducts = localStorage.getItem("products");
+
+      if (storedProducts) {
+        // Parse and use products from local storage
+        const parsedProducts = JSON.parse(storedProducts);
+        setProducts(parsedProducts);
+        setLoading(false);
+      } else {
+        // Fetch products from Sanity
+        fetchProducts();
+      }
+    };
+
     const fetchProducts = async () => {
       try {
         const data = await sanityClient.fetch(`*[_type == "product"]{
@@ -24,6 +39,7 @@ const NewArrivals = () => {
         }`);
         console.log("Fetched products:", data); // Log fetched products
         setProducts(data);
+        localStorage.setItem("products", JSON.stringify(data)); // Store fetched products in local storage
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -31,11 +47,13 @@ const NewArrivals = () => {
       }
     };
 
-    fetchProducts();
+    loadProducts();
   }, []);
 
   useEffect(() => {
-    const filtered = products.filter((product) => product.status === "new-arrival");
+    const filtered = products.filter(
+      (product) => product.status === "new-arrival"
+    );
     console.log("Filtered new arrivals:", filtered); // Log filtered products
     setFilteredProducts(filtered);
   }, [products]);

@@ -1,17 +1,32 @@
 import { useEffect, useState } from "react";
-import sanityClient from '../sanity/sanityClient';
+import sanityClient from "../sanity/sanityClient";
 import ProductCard from "./ProductCard";
 import { useNavigate } from "react-router-dom";
-import Layout from './Layout';
+import Layout from "./Layout";
 
 const TopSeller = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); // State for error handling
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch products from Sanity
+    // Function to load products from local storage or fetch from Sanity
+    const loadProducts = () => {
+      const storedProducts = localStorage.getItem("products");
+
+      if (storedProducts) {
+        // Parse and use products from local storage
+        const parsedProducts = JSON.parse(storedProducts);
+        setProducts(parsedProducts);
+        setLoading(false);
+      } else {
+        // Fetch products from Sanity
+        fetchProducts();
+      }
+    };
+
     const fetchProducts = async () => {
       try {
         const data = await sanityClient.fetch(`*[_type == "product"]{
@@ -24,18 +39,22 @@ const TopSeller = () => {
           status
         }`);
         setProducts(data);
+        localStorage.setItem("products", JSON.stringify(data)); // Store fetched products in local storage
       } catch (error) {
         console.error("Error fetching products:", error);
+        setError("Failed to load products. Please try again later."); // Set error message
       } finally {
         setLoading(false); // Stop loading after data is fetched
       }
     };
 
-    fetchProducts();
+    loadProducts();
   }, []);
 
   useEffect(() => {
-    const filtered = products.filter((product) => product.status === 'top-seller');
+    const filtered = products.filter(
+      (product) => product.status === "top-seller"
+    );
     setFilteredProducts(filtered);
   }, [products]);
 
@@ -58,6 +77,8 @@ const TopSeller = () => {
 
         {loading ? (
           <p className="text-center text-lg">Loading top-selling products...</p>
+        ) : error ? (
+          <p className="text-center text-lg text-red-500">{error}</p> // Show error message
         ) : filteredProducts.length === 0 ? (
           <p className="text-center text-lg text-gray-500">
             No top-selling products available at the moment.
