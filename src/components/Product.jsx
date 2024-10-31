@@ -42,6 +42,7 @@ const Product = () => {
       <Hero />
 
       <section className="bg-white">
+      <div className="max-w-[85%]  mx-auto">
         {/* New Arrivals Section */}
         <section id="new" className="max-w-full mx-auto">
           <h2 className="text-4xl font-bold text-center py-10">NEW ARRIVALS</h2>
@@ -71,7 +72,7 @@ const Product = () => {
             </button>
           </div>
       </section>
-
+              </div>
             {/* Browse by Dress Style Section */}
       <section className="max-w-[85%] text-gray-500 mx-auto bg-gray-100 p-5 text-center mt-10 rounded-3xl">
         <h2 className="text-4xl font-bold text-center py-10">BROWSE BY DRESS STYLE</h2>
@@ -88,11 +89,8 @@ const Product = () => {
           ))}
         </div>
       </section>
-        {/* Repeat similarly for other sections... */}
       </section>
 
-    
-      {/* Additional Sections for products (like New Arrivals) here */}
     </main>
   );
 };
