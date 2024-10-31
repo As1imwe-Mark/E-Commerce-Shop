@@ -1,18 +1,34 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Products } from "../constants/products";
+import sanityClient from '../sanity/sanityClient'
 import ProductCard from "./ProductCard";
 import { useNavigate } from "react-router-dom";
 
 const CategoryPage = () => {
   const { category } = useParams(); // Get the selected category from the URL
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({
     color: "",
     size: "",
     minPrice: 0,
     maxPrice: 500000,
   });
+
+  useEffect(() => {
+    // Fetch products from Sanity
+    sanityClient.fetch(`*[_type == "product"]{
+      _id,
+      name,
+      price,
+      size,
+      color,
+      "category": category->title,
+      description,
+      "imageUrl": image.asset->url,
+      status
+    }`).then((data) => setProducts(data));
+  }, []);
 
   const navigate = useNavigate()
   const Back =()=>{
@@ -21,9 +37,9 @@ const CategoryPage = () => {
 
 
   useEffect(() => {
-    const categoryProducts = Products.filter((product) => product.category === category);
+    const categoryProducts = products.filter((product) => product.category === category);
     setFilteredProducts(categoryProducts);
-  }, [category]);
+  }, [category,products]);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +47,7 @@ const CategoryPage = () => {
   };
 
   const applyFilters = () => {
-    const filtered = Products.filter(
+    const filtered = products.filter(
       (product) =>
         product.category === category &&
         (filters.color === "" || product.color === filters.color) &&
@@ -56,9 +72,12 @@ const CategoryPage = () => {
           className="w-full p-2 rounded"
         >
           <option value="">All</option>
-          <option value="Red">Red</option>
-          <option value="Blue">Blue</option>
-          <option value="Green">Green</option>
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="black">Black</option>
+          <option value="brown">Brown</option>
+          <option value="white">White</option>
+          <option value="green">Green</option>
         </select>
       </div>
       <div className="mb-5">
@@ -70,9 +89,10 @@ const CategoryPage = () => {
           className="w-full p-2 rounded"
         >
           <option value="">All</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
+          <option value="small">S</option>
+          <option value="medium">M</option>
+          <option value="large">L</option>
+          <option value="extra-large">XL</option>
         </select>
       </div>
       <div className="mb-5">
@@ -108,7 +128,7 @@ const CategoryPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
       {filteredProducts.map((product) => {
           if (product.category === category) {
-            return <ProductCard key={product.id} product={product} />;
+            return <ProductCard key={product._id} product={product} />;
           }
         })}
       </div>

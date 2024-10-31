@@ -1,20 +1,27 @@
 import { useState, useEffect } from 'react';
 import { cart, logo, menu} from '../assets/images';
 import { Link } from 'react-router-dom';
+import sanityClient from '../sanity/sanityClient'
 
 const Nav = () => {
   const [cartQuantity, setCartQuantity] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false)
+  const [cartItems, setCartItems] = useState([]);
 
+  const getQuantity = async ()=>{
+    const items = await sanityClient.fetch(`*[_type == "cart"]{_id,quantity}`)
+    setCartItems(items)
+    }
+    
   useEffect(() => {
     const intervalId = setInterval(()=>{
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    getQuantity()
     const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
     setCartQuantity(totalQuantity);
     },100)
 
     return ()=>clearInterval(intervalId)
-  }, []);
+  }, [cartItems]);
 
   
   return (

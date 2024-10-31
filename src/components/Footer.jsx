@@ -10,17 +10,17 @@ const Footer = () => {
           </p>
         </div>
         <div className="flex gap-5 items-center">
-          <div className="p-2 rounded-md">
-            <img src={facebook} alt="visa" />
+          <div className="p-1 h-3 w-3 rounded-md">
+            <img src={facebook} alt="visa" className="w-full object-cover"/>
           </div>
-          <div className="bg-white p-2 rounded-md">
-            <img src={github} alt="mastercard" />
+          <div className="bg-white p-1 h-3 w-3 rounded-md">
+            <img src={github} alt="mastercard" className="w-full object-cover"/>
           </div>
-          <div className="bg-white p-1 rounded-md">
-            <img src={message} alt="message" />
+          <div className="bg-white p-1 h-3 w-3 rounded-md">
+            <img src={message} alt="message" className="w-full object-cover" />
           </div>
-          <div className="bg-white p-2 rounded-md">
-            <img src={twitter} alt="twitter" />
+          <div className="bg-white p-1 h-3 w-3 rounded-md">
+            <img src={twitter} alt="twitter" className="w-full object-cover"/>
           </div>
         </div>
       </section>

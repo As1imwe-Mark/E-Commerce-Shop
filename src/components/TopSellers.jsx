@@ -1,20 +1,34 @@
 import { useEffect, useState } from "react";
-import { Products } from "../constants/products";
+import sanityClient from '../sanity/sanityClient'
 import ProductCard from "./ProductCard";
 import { useNavigate } from "react-router-dom";
 
 const TopSeller = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
-
+  const [products, setProducts] = useState([]);
   const navigate = useNavigate()
+
+  useEffect(() => {
+    // Fetch products from Sanity
+    sanityClient.fetch(`*[_type == "product"]{
+      _id,
+      name,
+      price,
+      "category": category->title,
+      description,
+      "imageUrl": image.asset->url,
+      status
+    }`).then((data) => setProducts(data));
+  }, []);
+
+  useEffect(() => {
+    const filtered = products.filter((product) => product.status === 'top-seller');
+    setFilteredProducts(filtered);
+  },[products]);
+
   const Back =()=>{
     navigate(-1)
   }
-
-  useEffect(() => {
-    const filtered = Products.filter((product) => product.status === 'topSelling');
-    setFilteredProducts(filtered);
-  }, []);
 
   return (
     <div className="max-w-full md:max-w-[85%] mx-auto md:mt-[79px] bg-white">
@@ -24,7 +38,7 @@ const TopSeller = () => {
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product._id} product={product} />
         ))}
       </div>
     </div>
