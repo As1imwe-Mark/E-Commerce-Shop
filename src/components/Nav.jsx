@@ -9,28 +9,23 @@ const Nav = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const getQuantity = async () => {
-    const localItems = localStorage.getItem(JSON.parse("cartItems"));
+    const localItems = localStorage.getItem("cartItems");
     if (localItems) {
-      setCartItems(localItems);
+      setCartItems(JSON.parse(localItems)); // Parse local storage items correctly
     } else {
-      const items = await sanityClient.fetch(
-        `*[_type == "cart"]{_id,quantity}`
-      );
+      const items = await sanityClient.fetch(`*[_type == "cart"]{_id, quantity}`);
       setCartItems(items);
     }
   };
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      getQuantity();
-      const totalQuantity = cartItems.reduce(
-        (acc, item) => acc + item.quantity,
-        0
-      );
-      setCartQuantity(totalQuantity);
-    }, 100);
+    getQuantity(); // Fetch the initial quantity on mount
+  }, []);
 
-    return () => clearInterval(intervalId);
+  useEffect(() => {
+    // Calculate the total quantity whenever cartItems changes
+    const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    setCartQuantity(totalQuantity);
   }, [cartItems]);
 
   return (
@@ -58,6 +53,7 @@ const Nav = () => {
             <Link to="/top-seller">Top Sellers</Link>
           </li>
         </ul>
+        {/* Uncomment if you want to add a search bar */}
         {/* <div className="flex items-center bg-gray-100 w-full md:w-[40%] rounded-3xl gap-2 p-2">
           <img src={search} alt="search" className="text-gray-300" />
           <input className="w-full bg-transparent outline-none" placeholder="Search for products..." />
@@ -84,7 +80,7 @@ const Nav = () => {
       <div
         className={`h-screen bg-white fixed top-[85px] left-0 transform transition-transform duration-500 ease-in-out ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
-        } md:hidden bg-white w-44`}
+        } md:hidden`}
       >
         <div className="flex items-center justify-center pt-12">
           <ul

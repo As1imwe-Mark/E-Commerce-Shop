@@ -13,12 +13,12 @@ const CartPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
+
   const Back = () => {
     navigate(-1);
   };
 
   useEffect(() => {
-    // Check if products are in local storage
     const localItems = localStorage.getItem("cartItems");
     if (localItems) {
       setCartItems(JSON.parse(localItems));
@@ -50,7 +50,7 @@ const CartPage = () => {
   const handleRemove = async (id) => {
     try {
       await sanityClient.delete(id);
-      setCartItems(cartItems.filter((item) => item._id !== id));
+      setCartItems((prevItems) => prevItems.filter((item) => item._id !== id));
       setSuccessMessage("Item removed successfully.");
     } catch (error) {
       setErrorMessage("Error removing item. Please try again.");
@@ -58,16 +58,16 @@ const CartPage = () => {
   };
 
   const handleQuantityChange = async (id, quantity) => {
+    const updatedQuantity = parseInt(quantity);
+    if (isNaN(updatedQuantity) || updatedQuantity <= 0) return;
+
     try {
-      const updatedQuantity = parseInt(quantity);
-      if (isNaN(updatedQuantity) || updatedQuantity <= 0) return;
-
       await sanityClient.patch(id).set({ quantity: updatedQuantity }).commit();
-
-      const updatedItems = cartItems.map((item) =>
-        item._id === id ? { ...item, quantity: updatedQuantity } : item
+      setCartItems((prevItems) =>
+        prevItems.map((item) =>
+          item._id === id ? { ...item, quantity: updatedQuantity } : item
+        )
       );
-      setCartItems(updatedItems);
       setSuccessMessage("Quantity updated successfully.");
     } catch (error) {
       setErrorMessage("Error updating quantity. Please try again.");
@@ -78,11 +78,14 @@ const CartPage = () => {
     (acc, item) => acc + item.product.price * item.quantity,
     0
   );
-  
 
   const handleCheckout = async () => {
     if (!customerName || !contact || !address) {
       setErrorMessage("Please fill in all customer details.");
+      return;
+    }
+    if (cartItems.length === 0) {
+      setErrorMessage("Your cart is empty. Please add items before checking out.");
       return;
     }
 
@@ -111,10 +114,11 @@ const CartPage = () => {
         items: orderDetails.items,
       });
       setSuccessMessage("Checkout successful! Your order has been placed.");
-      setCartItems([])
+      setCartItems([]);
       setCustomerName("");
       setContact("");
       setAddress("");
+      localStorage.removeItem("cartItems"); // Clear local storage
     } catch (error) {
       setErrorMessage("Something went wrong! Please try again.");
     }
@@ -162,17 +166,10 @@ const CartPage = () => {
                     className="w-20 h-20 object-cover rounded shadow-md"
                   />
                   <div className="flex flex-col ml-4 flex-grow">
-                    <h2 className="text-lg font-semibold">
-                      {item.product.name}
-                    </h2>
-                    <p className="text-gray-600">
-                      Price: UGX {item.product.price}
-                    </p>
+                    <h2 className="text-lg font-semibold">{item.product.name}</h2>
+                    <p className="text-gray-600">Price: UGX {item.product.price}</p>
                     <div className="flex items-center mt-2">
-                      <label
-                        htmlFor={`quantity-${item._id}`}
-                        className="mr-2 text-sm"
-                      >
+                      <label htmlFor={`quantity-${item._id}`} className="mr-2 text-sm">
                         Qty:
                       </label>
                       <input
@@ -181,9 +178,7 @@ const CartPage = () => {
                         value={item.quantity}
                         min="1"
                         className="w-16 p-1 border border-gray-300 rounded"
-                        onChange={(e) =>
-                          handleQuantityChange(item._id, e.target.value)
-                        }
+                        onChange={(e) => handleQuantityChange(item._id, e.target.value)}
                       />
                     </div>
                   </div>
@@ -198,10 +193,7 @@ const CartPage = () => {
             )}
 
             <div className="mt-5">
-              <h2 className="font-semibold text-lg">
-                Mobile Money Payment Options
-              </h2>
-
+              <h2 className="font-semibold text-lg">Mobile Money Payment Options</h2>
               <div className="mt-3">
                 <h3 className="font-medium text-md">For AirtelMoney Use</h3>
                 <div className="flex items-center mt-1">
@@ -216,9 +208,7 @@ const CartPage = () => {
               </div>
 
               <div className="mt-3">
-                <h3 className="font-medium text-md">
-                  For MTN Mobile Money Use
-                </h3>
+                <h3 className="font-medium text-md">For MTN Mobile Money Use</h3>
                 <div className="flex items-center mt-1">
                   <img
                     src={mtn}
