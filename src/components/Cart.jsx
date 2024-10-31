@@ -19,10 +19,6 @@ const CartPage = () => {
   };
 
   useEffect(() => {
-    const localItems = localStorage.getItem("cartItems");
-    if (localItems) {
-      setCartItems(JSON.parse(localItems));
-    } else {
       const fetchCartItems = async () => {
         try {
           const items = await sanityClient.fetch(`*[_type == "cart"]{
@@ -44,8 +40,7 @@ const CartPage = () => {
         }
       };
       fetchCartItems();
-    }
-  }, []);
+    },[])
 
   const handleRemove = async (id) => {
     try {

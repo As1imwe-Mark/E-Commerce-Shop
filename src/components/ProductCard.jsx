@@ -38,7 +38,6 @@ const ProductCard = ({ product }) => {
 
         const createdCartItem = await sanityClient.create(newCartItem);
         setCartItems([...cartItems, { ...createdCartItem, productId: product._id }]);
-        localStorage.setItems('cartItems', JSON.stringify(cartItems))
       }
 
       // Set success state
