@@ -6,6 +6,7 @@ import {schemaTypes} from './schemaTypes'
 export default defineConfig({
   name: 'default',
   title: 'Twau Africa Ltd',
+  studioHost: 'twauafricaltd',
 
   projectId: 'zby4zsju',
   dataset: 'production',
