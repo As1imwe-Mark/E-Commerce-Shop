@@ -74,12 +74,11 @@ const CartPage = () => {
     }
   };
 
-  const subtotal = cartItems.reduce(
+  const total = cartItems.reduce(
     (acc, item) => acc + item.product.price * item.quantity,
     0
   );
-  const tax = subtotal * 0.08;
-  const total = subtotal + tax;
+  
 
   const handleCheckout = async () => {
     if (!customerName || !contact || !address) {
@@ -265,12 +264,6 @@ const CartPage = () => {
               />
             </div>
             <ul className="space-y-2 mb-5">
-              <li className="flex justify-between">
-                <span>Subtotal:</span> <span>UGX {subtotal.toFixed(2)}</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Tax (8%):</span> <span>UGX {tax.toFixed(2)}</span>
-              </li>
               <li className="flex justify-between font-bold">
                 <span>Total:</span> <span>UGX {total.toFixed(2)}</span>
               </li>
